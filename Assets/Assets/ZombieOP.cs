@@ -11,7 +11,7 @@ namespace Npc
 {
     namespace enemy
     {
-        public class ZombieOP : NpcEstado
+        public class ZombieOP : Monsters
         {           
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
@@ -22,6 +22,10 @@ namespace Npc
                 datosZombi.sabroso = (CosasZombie.Gustos)dargusto;
                 datosZombi.edadzombi = Random.Range(15, 101);
                 textoz = GameObject.Find("Main Camera");
+            }
+             public override int takedagame(int damage)
+            {
+                return hp - (damage);
             }
             public void cam ()
             {
@@ -58,7 +62,7 @@ namespace Npc
                 StartCoroutine("Cambioestado");
 
                 JugadorObjeto = FindObjectOfType<Hero>().gameObject;
-                
+                Debug.Log(takedagame(5));
 
             }         
             
@@ -91,16 +95,18 @@ namespace Npc
                 }
                 else if (distanciajugador <= 3.0f)
                 {
+                    
                     direction = Vector3.Normalize(JugadorObjeto.transform.position - transform.position);
                     transform.position += direction * 0.1f;
-                    Debug.Log("waaarrrr "+ "quiero comer "+ datosZombi.sabroso + "" + datosZombi.edadzombi);
+                   // Debug.Log("waaarrrr "+ "quiero comer "+ datosZombi.sabroso + "" + datosZombi.edadzombi);
+                    FindObjectsOfType<ZombieOP>();
                     textoz.GetComponent<Generador>().Ztext.text = "waaarrrr "+ "quiero comer "+ datosZombi.sabroso;
 
 
                 }
-                 else if (distanciajugador >= 3.0f)
+                 else if (distanciajugador >= 5.0f)
                     {
-                         textoz.GetComponent<Generador>().Ztext.text = "";
+                     textoz.GetComponent<Generador>().ctext.text = "";
                     }
                 else // no hay un ciudadano cerca
                 {

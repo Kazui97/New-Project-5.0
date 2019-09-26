@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Npc.ally;
 
-public class VampiroOP : MonoBehaviour
+public class VampiroOP : Monsters
 {
-    public GameObject jugador;
+    public GameObject jugadorObjeto;
 
 
-    Vector3 prueba;
+    Vector3 direcc;
      void OnDrawGizmos()
         {
-         Gizmos.DrawLine(transform.position, transform.position + prueba);
+         Gizmos.DrawLine(transform.position, transform.position + direcc);
         }
 
 
@@ -19,8 +19,9 @@ public class VampiroOP : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine ("cambioestado");
-        jugador = FindObjectOfType<Hero>().gameObject;
+        StartCoroutine("Cambioestado");
+        
+        jugadorObjeto = FindObjectOfType<Hero>().gameObject;
 
         int color = Random.Range(0,2);
         switch (color)
@@ -54,17 +55,21 @@ public class VampiroOP : MonoBehaviour
             }
             
         }
-        Vector3 mivector = jugador.transform.position - transform.position;
-        float distanciajugador = mivector.magnitude;
+        Vector3 mvector = jugadorObjeto.transform.position - transform.position;
+        float distanciajugador = mvector.magnitude;
         if (ciudadanocerca != null)
         {
-            prueba = Vector3.Normalize(ciudadanocerca.transform.position - transform.position);
-            transform.position += prueba * 2.5f;
+            direcc = Vector3.Normalize(ciudadanocerca.transform.position - transform.position);
+            transform.position += direcc * 0.5f;
         }
         else if (distanciajugador <= 3.0f )
         {
-            prueba = Vector3.Normalize(jugador.transform.position - transform.position);
-            transform.position += prueba * 0.1f;
+            direcc = Vector3.Normalize(jugadorObjeto.transform.position - transform.position);
+            transform.position += direcc * 0.1f;
+        }
+        else 
+        {
+            Statemovi();
         }
     }
 }

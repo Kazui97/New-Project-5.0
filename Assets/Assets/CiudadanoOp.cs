@@ -51,9 +51,11 @@ namespace Npc
                     cambioedad.datosZombi = (CosasZombie) gameObject.GetComponent<CiudadanoOp>().datoCiudadanos;
                     Destroy(this.gameObject.GetComponent<CiudadanoOp>());    
                 }
-                else if (collision.transform.name = "vampi")
+                else if (collision.transform.name == "vampi")
                 {
-                    
+                    transform.name = "vampi";
+                    gameObject.AddComponent<VampiroOP>();
+                    Destroy(this.gameObject.GetComponent<CiudadanoOp>());
                 }
             }
 
@@ -81,11 +83,12 @@ namespace Npc
                     transform.position += direc * 0.1f;
                 }
                  
-                 else if(distanciajugador <= 5.0f)
+                 else if(distanciajugador <= 3.0f)
                  {
-                       textc.GetComponent<Generador>().ctext.text = "HOOOOOLA SOY  "+datoCiudadanos.genteNombres + "Y TENGO  "+ datoCiudadanos.edadgente;
+                      FindObjectsOfType<CiudadanoOp>();
+                      textc.GetComponent<Generador>().ctext.text = "HOOOOOLA SOY  "+datoCiudadanos.genteNombres + "Y TENGO  "+ datoCiudadanos.edadgente;
                  }
-                 else if (distanciajugador >= 3.0f)
+                 else if (distanciajugador >= 5.0f)
                     {
                          textc.GetComponent<Generador>().Ztext.text = "";
                     }
