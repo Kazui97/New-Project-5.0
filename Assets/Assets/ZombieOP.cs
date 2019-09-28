@@ -15,6 +15,7 @@ namespace Npc
         {           
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
+            public int daño = -2;
             void Awake()
             {
                 datosZombi.colorEs = (CosasZombie.ColorZombie)Random.Range(0, 3);
@@ -33,8 +34,8 @@ namespace Npc
                 if (collision.transform.name == "Hero")
                 {
                     takedagame(hp / 2);
-                    Debug.Log(hp);
-                        
+                    Debug.Log(takedagame(5));
+
                 }
             }
             public void cam ()
@@ -72,7 +73,7 @@ namespace Npc
                 StartCoroutine("Cambioestado");
 
                 JugadorObjeto = FindObjectOfType<Hero>().gameObject;
-                Debug.Log(takedagame(5));
+
 
             }         
             

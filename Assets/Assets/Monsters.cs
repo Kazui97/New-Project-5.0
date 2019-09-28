@@ -5,6 +5,7 @@ using UnityEngine;
 public class Monsters : MonoBehaviour
 {     
     int cambimov;
+    public GameObject vida;
         void Start()
         {
            // Zombie Z = new zombie();

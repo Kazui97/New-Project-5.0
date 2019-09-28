@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Npc.ally;
 using Npc.enemy;
 using Npc;
@@ -11,14 +12,31 @@ public class Hero : MonoBehaviour
 {
     CosasZombie datosZombi;
     CosasCiudadanos datosciudadanos;
-    
-    //CosasCiudadanos datoCiudadanos;
-    void Start()
-    {
-        
-    }
 
-    
+    //public float vidamax = 100f;
+    //float V_actual;
+
+    //public Image barravida;
+    //void Start()
+    //{
+    //    V_actual = vidamax;
+    //    barravida.fillAmount = vidamax / V_actual;
+    //}
+    //private void OnTriggerEnter(Collider col)
+    //{
+    //    if (col.transform.name == "Zombi")
+    //    {
+    //        V_actual -= 1f;
+    //        barravida.fillAmount = V_actual / vidamax;
+    //        Debug.Log("funciona");
+    //    }
+    //    if (V_actual <= 0)
+    //    {
+    //        Debug.Log("esay :,v");
+    //    }
+    //}
+
+
     void Update()
     {
         

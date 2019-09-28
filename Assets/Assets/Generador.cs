@@ -14,6 +14,7 @@ public class Generador : MonoBehaviour
     public GameObject ZombieMesh;
     public GameObject VampiroMesh;
     public GameObject Gente;
+    public Image vidahero;
     public GameObject Hero;
     CosasZombie datoszombi;
     CosasCiudadanos datoCiudadanos;    
@@ -103,6 +104,7 @@ public class Generador : MonoBehaviour
         Hero = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Hero.AddComponent<MovimientoTeclado>();
         Hero.AddComponent<Hero>();
+        Hero.AddComponent<BarraVida>();
         Hero.AddComponent<Camera>();
         Hero.AddComponent<Rigidbody>();
         Hero.name = "Hero";

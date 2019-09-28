@@ -6,13 +6,13 @@ using Npc.ally;
 public class VampiroOP : Monsters
 {
     public GameObject jugadorObjeto;
-
+    
 
     Vector3 direcc;
      void OnDrawGizmos()
-        {
+     {
          Gizmos.DrawLine(transform.position, transform.position + direcc);
-        }
+     }
 
 
 
