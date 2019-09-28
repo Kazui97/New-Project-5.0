@@ -3,45 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Monsters : MonoBehaviour
-{
-     
-    
-    
-        public int hp;
-        public GameObject prueba;
-
-        public Monsters()
-        {
-            hp = 50;
-            //prueba = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            //Debug.Log("un cubo nuevo");
-        }
-        public virtual int takedagame(int damage)
-        {
-            return hp - damage;
-        }
-    
-
-   /*  class zombie : Monsters
-    {
-        public override int takedagame(int damage)
-        {
-        return hp - (damage);
-        }
-    }*/
-    class vampire : Monsters
-    {
-        public override int takedagame(int damage)
-        {
-            return hp -(damage/2);
-        }
-    }
-
-
-
+{     
     int cambimov;
         void Start()
-    {
+        {
            // Zombie Z = new zombie();
             vampire V = new vampire();
           //  Debug.Log (Z.takedagame(5));
@@ -52,8 +17,36 @@ public class Monsters : MonoBehaviour
 
         condicion = (Estados)0;
 
+        }
+    public int hp;
+    public GameObject prueba;
+
+    public Monsters()
+    {
+        hp = 50;
+        //prueba = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //Debug.Log("un cubo nuevo");
+    }
+    public virtual int takedagame(int damage)
+    {
+        return hp - damage;
     }
 
+
+    /*  class zombie : Monsters
+     {
+         public override int takedagame(int damage)
+         {
+         return hp - (damage);
+         }
+     }*/
+    class vampire : Monsters
+    {
+        public override int takedagame(int damage)
+        {
+            return hp - (damage / 2);
+        }
+    }
     public void Statemovi()
     {
             switch(condicion)

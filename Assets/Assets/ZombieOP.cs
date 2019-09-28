@@ -23,9 +23,19 @@ namespace Npc
                 datosZombi.edadzombi = Random.Range(15, 101);
                 textoz = GameObject.Find("Main Camera");
             }
+
              public override int takedagame(int damage)
-            {
+             {
                 return hp - (damage);
+             }
+            public void OnCollisionEnter(Collision collision)
+            {
+                if (collision.transform.name == "Hero")
+                {
+                    takedagame(hp / 2);
+                    Debug.Log(hp);
+                        
+                }
             }
             public void cam ()
             {
