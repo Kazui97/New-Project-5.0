@@ -43,6 +43,7 @@ namespace Npc
                         vidaactualz = 0;
                         Debug.Log("zombi melto");
                         Destroy(this.gameObject.GetComponent<ZombieOP>());
+                        
 
                        /*  if ( vidaActual == 0)
                         {

@@ -37,17 +37,17 @@ public class Hero : MonoBehaviour
             }
         }
         Hpstate();
-        Update();
+        
     }
 
     void Hpstate()
     {
-        //HpHero.fillAmount = ((1/ HpMax) * HpActual);
+        HpHero.fillAmount = ((1/ HpActual) * HpMax);
     }
 
     void Update()
     {
-        HpHero.fillAmount = ((1/ HpMax) * HpActual);
+        
     }
 
    /* private void OnCollisionEnter(Collision collision)          // colision de zombi y aldeanos 
