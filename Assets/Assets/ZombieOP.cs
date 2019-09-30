@@ -15,8 +15,8 @@ namespace Npc
         {           
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
-           // public int vidaZmax = 100;
-            //public int vidaactualz;
+            public int vidaZmax = 100;
+            public int vidaactualz;
             public int daño = -2;
             void Awake()
             {
@@ -25,18 +25,15 @@ namespace Npc
                 datosZombi.sabroso = (CosasZombie.Gustos)dargusto;
                 datosZombi.edadzombi = Random.Range(15, 101);
                 textoz = GameObject.Find("Main Camera");
+                
             }
 
             
             public void OnCollisionEnter(Collision collision)
             {
                 if (collision.transform.name == "Hero")
-                {
-                    HpEnimy();
-                    Debug.Log("zombi");
-                    //takedagame(vida_hp++);
-                    //Debug.Log(takedagame(vida_hp));
-                   /*  vidaactualz += -10;
+                { 
+                     vidaactualz += -10;
                     if (vidaactualz > vidaZmax)
                     {
                         vidaactualz = vidaZmax;
@@ -44,8 +41,16 @@ namespace Npc
                     else if (vidaactualz < 0)
                     {
                         vidaactualz = 0;
+                        Debug.Log("zombi melto");
+                        Destroy(this.gameObject.GetComponent<ZombieOP>());
+
+                       /*  if ( vidaActual == 0)
+                        {
+                         Debug.Log("zombi muelto");
+                        }*/
                     }
-                    Debug.Log(vidaactualz);*/
+                    
+                    Debug.Log(vidaactualz);
                 }
             }
             public void cam ()
@@ -79,7 +84,7 @@ namespace Npc
            
             void Start()
             {
-                //vidaactualz = vidaZmax;
+                vidaactualz = vidaZmax;
                 StartCoroutine("Cambioestado");
 
                 JugadorObjeto = FindObjectOfType<Hero>().gameObject;

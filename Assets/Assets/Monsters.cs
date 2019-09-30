@@ -11,9 +11,9 @@ public class Monsters : MonoBehaviour
         void Start()
         {
             condicion = (Estados)0;
-            vidaActual = vidaMx;
+           // vidaActual = vidaMx;
         }
-   public void HpEnimy()
+ /*  public void HpEnimy()                                              /// mejorar \\\
    {
        vidaActual += -10;
        if (vidaActual > vidaMx)
@@ -23,8 +23,10 @@ public class Monsters : MonoBehaviour
        else if (vidaActual < 0)
        {
            vidaActual = 0;
+           //Destroy(this.gameObject.GetComponent<Npc.enemy.ZombieOP>());
        }
-   }
+      Debug.Log(vidaActual + "zombi");
+   }*/
    
     public void Statemovi()
     {

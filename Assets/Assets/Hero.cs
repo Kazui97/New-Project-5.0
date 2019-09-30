@@ -12,37 +12,45 @@ public class Hero : MonoBehaviour
 {
     CosasZombie datosZombi;
     CosasCiudadanos datosciudadanos;
+    public Image HpHero;
+    public float HpMax = 100;
+    public float HpActual;
+    void start()
+    {
+        HpActual = HpMax;
+      
+    }
 
-    //public float vidamax = 100f;
-    //float V_actual;
+    public void OnCollisionEnter(Collision col)
+    {
+        if ( col.transform.name == "Zombi")
+        {
+           
+            HpActual += -10f;
+            if (HpActual > HpMax)
+            {
+                HpActual = HpMax;
+            }
+            else if (HpActual < 0)
+            {
+                HpActual = 0;
+            }
+        }
+        Hpstate();
+        Update();
+    }
 
-    //public Image barravida;
-    //void Start()
-    //{
-    //    V_actual = vidamax;
-    //    barravida.fillAmount = vidamax / V_actual;
-    //}
-    //private void OnTriggerEnter(Collider col)
-    //{
-    //    if (col.transform.name == "Zombi")
-    //    {
-    //        V_actual -= 1f;
-    //        barravida.fillAmount = V_actual / vidamax;
-    //        Debug.Log("funciona");
-    //    }
-    //    if (V_actual <= 0)
-    //    {
-    //        Debug.Log("esay :,v");
-    //    }
-    //}
-
+    void Hpstate()
+    {
+        //HpHero.fillAmount = ((1/ HpMax) * HpActual);
+    }
 
     void Update()
     {
-        
+        HpHero.fillAmount = ((1/ HpMax) * HpActual);
     }
 
-    private void OnCollisionEnter(Collision collision)          // colision de zombi y aldeanos 
+   /* private void OnCollisionEnter(Collision collision)          // colision de zombi y aldeanos 
     {
         if (collision.transform.name == "Zombi")
         {
@@ -56,5 +64,5 @@ public class Hero : MonoBehaviour
             datosciudadanos = collision.gameObject.GetComponent<CiudadanoOp>().datoCiudadanos;
             Debug.Log("Hola soy " + datosciudadanos.genteNombres + " y tengo " + datosciudadanos.edadgente);
         }
-    }
+    }*/
 }
