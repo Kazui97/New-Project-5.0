@@ -5,49 +5,27 @@ using UnityEngine;
 public class Monsters : MonoBehaviour
 {     
     int cambimov;
+    public int vidaMx = 100;
+    public int vidaActual;
     public GameObject vida;
         void Start()
         {
-           // Zombie Z = new zombie();
-            vampire V = new vampire();
-          //  Debug.Log (Z.takedagame(5));
-            Debug.Log (V.takedagame(5));
-
-
-
-
-        condicion = (Estados)0;
-
+            condicion = (Estados)0;
+            vidaActual = vidaMx;
         }
-    public int hp;
-    public GameObject prueba;
-
-    public Monsters()
-    {
-        hp = 50;
-        //prueba = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        //Debug.Log("un cubo nuevo");
-    }
-    public virtual int takedagame(int damage)
-    {
-        return hp - damage;
-    }
-
-
-    /*  class zombie : Monsters
-     {
-         public override int takedagame(int damage)
-         {
-         return hp - (damage);
-         }
-     }*/
-    class vampire : Monsters
-    {
-        public override int takedagame(int damage)
-        {
-            return hp - (damage / 2);
-        }
-    }
+   public void HpEnimy()
+   {
+       vidaActual += -10;
+       if (vidaActual > vidaMx)
+       {
+           vidaActual = vidaMx;
+       }
+       else if (vidaActual < 0)
+       {
+           vidaActual = 0;
+       }
+   }
+   
     public void Statemovi()
     {
             switch(condicion)

@@ -14,10 +14,10 @@ public class BarraVida : MonoBehaviour
     {
         V_actual = vidamax;
     }
-    [ContextMenu("add")]
+   // [ContextMenu("quitar vida")]
     public void AddHealth(float daño)
     {
-        //V_actual += daño;
+        V_actual += -10;
         if (V_actual > vidamax)
         {
             V_actual = vidamax;
@@ -33,10 +33,9 @@ public class BarraVida : MonoBehaviour
         {
             barravida.fillAmount = (1 / vidamax) * V_actual;
         }
-
         
     }
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.name == "Zombi")
         {

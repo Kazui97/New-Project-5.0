@@ -15,6 +15,8 @@ namespace Npc
         {           
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
+           // public int vidaZmax = 100;
+            //public int vidaactualz;
             public int daño = -2;
             void Awake()
             {
@@ -25,17 +27,25 @@ namespace Npc
                 textoz = GameObject.Find("Main Camera");
             }
 
-             public override int takedagame(int damage)
-             {
-                return hp - (damage);
-             }
+            
             public void OnCollisionEnter(Collision collision)
             {
                 if (collision.transform.name == "Hero")
                 {
-                    takedagame(hp / 2);
-                    Debug.Log(takedagame(5));
-
+                    HpEnimy();
+                    Debug.Log("zombi");
+                    //takedagame(vida_hp++);
+                    //Debug.Log(takedagame(vida_hp));
+                   /*  vidaactualz += -10;
+                    if (vidaactualz > vidaZmax)
+                    {
+                        vidaactualz = vidaZmax;
+                    }
+                    else if (vidaactualz < 0)
+                    {
+                        vidaactualz = 0;
+                    }
+                    Debug.Log(vidaactualz);*/
                 }
             }
             public void cam ()
@@ -69,7 +79,7 @@ namespace Npc
            
             void Start()
             {
-                
+                //vidaactualz = vidaZmax;
                 StartCoroutine("Cambioestado");
 
                 JugadorObjeto = FindObjectOfType<Hero>().gameObject;
