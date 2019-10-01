@@ -15,35 +15,48 @@ public class Hero : MonoBehaviour
     public Image HpHero;
     public float HpMax = 100;
     public float HpActual;
-    void start()
+    void Start()
     {
         HpActual = HpMax;
       
     }
+    public void addhP()
+    {
+        HpActual += -10f;
+        if (HpActual > HpMax)
+        {
+            HpActual = HpMax;
+        }
+        else if (HpActual < 0)
+        {
+            HpActual = 0;
+            
+        }
+        Hpstate();
+
+        
+    }
+    void Hpstate()
+        {
+            HpHero.fillAmount = ((1/ HpMax) * HpActual);
+        }
 
     public void OnCollisionEnter(Collision col)
     {
         if ( col.transform.name == "Zombi")
-        {
-           
-            HpActual += -10f;
-            if (HpActual > HpMax)
+        {           
+            addhP();
+
+            /*if (HpActual == 0)
             {
-                HpActual = HpMax;
-            }
-            else if (HpActual < 0)
-            {
-                HpActual = 0;
-            }
+                Destroy(col.gameObject);
+            }*/
         }
-        Hpstate();
+        
         
     }
 
-    void Hpstate()
-    {
-        HpHero.fillAmount = ((1/ HpActual) * HpMax);
-    }
+    
 
     void Update()
     {

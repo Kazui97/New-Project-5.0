@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BarraVida : MonoBehaviour
 {
-/*     public float vidamax = 100;
+/* *   public float vidamax = 100;
     public float V_actual;
 
     public Image barravida;

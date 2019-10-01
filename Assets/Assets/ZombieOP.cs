@@ -28,10 +28,10 @@ namespace Npc
                 
             }
 
-            
+           
             public void OnCollisionEnter(Collision collision)
             {
-                if (collision.transform.name == "Hero")
+                if (collision.transform.name == "player")
                 { 
                      vidaactualz += -10;
                     if (vidaactualz > vidaZmax)
@@ -42,8 +42,9 @@ namespace Npc
                     {
                         vidaactualz = 0;
                         Debug.Log("zombi melto");
-                        Destroy(this.gameObject.GetComponent<ZombieOP>());
-                        
+                        //Destroy(collision.gameObject); /// SIRVE
+                       //Destroy(collision.gameObject.GetComponent<ZombieOP>());
+                        //Object.Destroy(gameObject.GetComponent<ZombieOP>());
 
                        /*  if ( vidaActual == 0)
                         {
