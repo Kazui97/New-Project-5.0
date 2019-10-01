@@ -28,7 +28,7 @@ namespace Npc
                 
             }
 
-           
+           // gameobjet.intanse + prefraf\\
             public void OnCollisionEnter(Collision collision)
             {
                 if (collision.transform.name == "player")
