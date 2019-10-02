@@ -42,7 +42,7 @@ namespace Npc
                     {
                         vidaactualz = 0;
                         Debug.Log("zombi melto");
-                        //Destroy(collision.gameObject); /// SIRVE
+                        Destroy(this.gameObject); /// SIRVE
                        //Destroy(collision.gameObject.GetComponent<ZombieOP>());
                         //Object.Destroy(gameObject.GetComponent<ZombieOP>());
 

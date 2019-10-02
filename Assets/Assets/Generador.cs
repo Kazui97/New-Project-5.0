@@ -45,13 +45,15 @@ public class Generador : MonoBehaviour
             if (Random.Range(0,2)==0)
             {           
                 // generador de zombis
-                ZombieMesh = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                ZombieMesh = Instantiate<GameObject>(ZombieMesh);
                 
-                ZombieMesh.AddComponent<ZombieOP>();
+                //ZombieMesh = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 
-                datoszombi = ZombieMesh.GetComponent<ZombieOP>().datosZombi;
+                //ZombieMesh.AddComponent<ZombieOP>();
                 
-                switch (datoszombi.colorEs)
+               // datoszombi = ZombieMesh.GetComponent<ZombieOP>().datosZombi;
+                
+               /* switch (datoszombi.colorEs)
                 {
                     case CosasZombie.ColorZombie.magenta:
                         ZombieMesh.GetComponent<Renderer>().material.color = Color.magenta;
@@ -64,7 +66,7 @@ public class Generador : MonoBehaviour
                     case CosasZombie.ColorZombie.cyan:
                         ZombieMesh.GetComponent<Renderer>().material.color = Color.cyan;
                         break;
-                }
+                }*/
                 
 
                 Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
@@ -72,7 +74,7 @@ public class Generador : MonoBehaviour
                
                 ZombieMesh.transform.position = pos;
                 
-               ZombieMesh.AddComponent<Rigidbody>();
+                //ZombieMesh.AddComponent<Rigidbody>();
                 
                ZombieMesh.name = "Zombi";
             }

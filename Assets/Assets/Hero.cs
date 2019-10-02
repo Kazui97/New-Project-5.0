@@ -12,15 +12,24 @@ public class Hero : MonoBehaviour
 {
     CosasZombie datosZombi;
     CosasCiudadanos datosciudadanos;
+    public GameObject botiquin;
     public Image HpHero;
     public float HpMax = 100;
     public float HpActual;
+    public float cura;
+    
+     
+
     void Start()
     {
+        cura = Random.Range(5,50);
         HpActual = HpMax;
-      
+        botiquin = Instantiate<GameObject>(botiquin);
+        Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+        botiquin.transform.position = pos;
+        botiquin.name = "curas";
     }
-    public void addhP()
+    public void AddhP()
     {
         HpActual += -10f;
         if (HpActual > HpMax)
@@ -34,25 +43,30 @@ public class Hero : MonoBehaviour
         }
         Hpstate();
 
-        
     }
-    void Hpstate()
+    
+     void Hpstate()
         {
-            HpHero.fillAmount = ((1/ HpMax) * HpActual);
+            HpHero.fillAmount = ((1/ HpMax) * HpActual);         
         }
 
     public void OnCollisionEnter(Collision col)
     {
         if ( col.transform.name == "Zombi")
         {           
-            addhP();
+            AddhP();
 
-            /*if (HpActual == 0)
-            {
-                Destroy(col.gameObject);
-            }*/
+           
         }
-        
+         if (col.transform.name == "curas")
+            {
+                HpActual += cura;
+                Hpstate();
+                if (HpActual > HpMax)
+                {
+                    HpActual = HpMax;
+                }
+            }
         
     }
 
