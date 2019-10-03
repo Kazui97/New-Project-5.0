@@ -8,17 +8,18 @@ using Npc;
 
 
 
-public class Hero : MonoBehaviour
+ public class Hero : MonoBehaviour
 {
     CosasZombie datosZombi;
     CosasCiudadanos datosciudadanos;
+    public GameObject espada;
     public GameObject botiquin;
     public Image HpHero;
     public float HpMax = 100;
     public float HpActual;
     public float cura;
     
-     
+    
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class Hero : MonoBehaviour
         Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
         botiquin.transform.position = pos;
         botiquin.name = "curas";
+        espada = Instantiate<GameObject>(espada);
     }
     public void AddhP()
     {
@@ -59,14 +61,14 @@ public class Hero : MonoBehaviour
            
         }
          if (col.transform.name == "curas")
-            {
+         {
                 HpActual += cura;
                 Hpstate();
                 if (HpActual > HpMax)
                 {
                     HpActual = HpMax;
                 }
-            }
+         }
         
     }
 
@@ -74,7 +76,6 @@ public class Hero : MonoBehaviour
 
     void Update()
     {
-        
     }
 
    /* private void OnCollisionEnter(Collision collision)          // colision de zombi y aldeanos 
