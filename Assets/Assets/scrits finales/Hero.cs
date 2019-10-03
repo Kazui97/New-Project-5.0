@@ -33,7 +33,7 @@ using Npc;
     }
     public void AddhP()
     {
-        HpActual -= 10f;
+        HpActual += 10f;
         if (HpActual > HpMax)
         {
             HpActual = HpMax;
@@ -54,12 +54,14 @@ using Npc;
 
     public void OnCollisionEnter(Collision col)
     {
-        /*if ( col.transform.name == "Zombi")
-        {           
-            AddhP();
-
+        if ( col.transform.name == "player")
+        {    
+            if (col.transform.name == "Zombi")       
+            {
+                AddhP();
+            }
            
-        }*/
+        }
          if (col.transform.name == "curas")
          {
                 HpActual += cura;

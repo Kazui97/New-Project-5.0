@@ -20,8 +20,13 @@ public class sword : Npc.enemy.ZombieOP
      public new void  OnCollisionEnter(Collision colespada)
      {
          if (colespada.transform.name == "Zombi")
-        {
+        {   
+            transform.parent = null;
             vidaactualz -= dañoespada;
+        }
+        else 
+        {
+            //transform.parent = true;
         }
      }
 
