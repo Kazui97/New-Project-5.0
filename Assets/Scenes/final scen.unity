@@ -855,7 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa6c73c0af2b3748b6f72cffeb3c692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  espada: {fileID: 0}
+  espada: {fileID: 1311979191}
   botiquin: {fileID: 3648431884092626512, guid: 291a8dedb4688e3469aa939f30cfcd8d,
     type: 3}
   HpHero: {fileID: 1923848596472227522}
