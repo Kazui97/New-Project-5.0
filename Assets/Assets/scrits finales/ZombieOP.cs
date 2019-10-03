@@ -31,7 +31,7 @@ namespace Npc
 
            void HpZ()
            {
-                vidaactualz += -1;
+                vidaactualz += -10;
                 if (vidaactualz > vidaZmax)
                 {
                     vidaactualz = vidaZmax;

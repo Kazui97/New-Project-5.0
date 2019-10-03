@@ -12,7 +12,7 @@ using Npc;
 {
     CosasZombie datosZombi;
     CosasCiudadanos datosciudadanos;
-    public GameObject espada;
+    //public GameObject espada;
     public GameObject botiquin;
     public Image HpHero;
     public float HpMax = 100;
@@ -29,11 +29,11 @@ using Npc;
         Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
         botiquin.transform.position = pos;
         botiquin.name = "curas";
-        espada = Instantiate<GameObject>(espada);
+       // espada = Instantiate<GameObject>(espada);
     }
     public void AddhP()
     {
-        HpActual += -10f;
+        HpActual -= 10f;
         if (HpActual > HpMax)
         {
             HpActual = HpMax;
