@@ -42,11 +42,9 @@ public class Generador : MonoBehaviour
             }
             else if (Random.Range(0,2)== 1)                                             // generador de ciudadanos \\
             {
-                Gente = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Gente.AddComponent<CiudadanoOp>();
-                Vector3 po = new Vector3(Random.Range(-20, 10), 0, Random.Range(10, 10));
+                Gente = Instantiate<GameObject>(Gente);
+                Vector3 po = new Vector3(Random.Range(-30, 10), 0, Random.Range(30, 10));
                 Gente.transform.position = po;
-                Gente.AddComponent<Rigidbody>();
                 Gente.name = "Gente";
             }
             else

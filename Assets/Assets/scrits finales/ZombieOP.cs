@@ -16,9 +16,9 @@ namespace Npc
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
             public Image Hpenemy;
-            public int vidaZmax = 100;
-            public int vidaactualz;
-            public int daño = -2;
+            public float vidaZmax = 100;
+            public float vidaactualz;
+            public float daño = -2;
             void Awake()
             {
                 datosZombi.colorEs = (CosasZombie.ColorZombie)Random.Range(0, 3);
@@ -31,7 +31,7 @@ namespace Npc
 
            void HpZ()
            {
-                vidaactualz += -10;
+                vidaactualz -= 15;
                 if (vidaactualz > vidaZmax)
                 {
                     vidaactualz = vidaZmax;
@@ -59,7 +59,7 @@ namespace Npc
                     Debug.Log(vidaactualz);
                 }
            }
-            public void Cam ()
+            public void Cam ()                                      // color de los zombies-ciudadanos cuando se transforman \\
             {
                 int cambiocolor = Random.Range(1,3);
                  switch (cambiocolor)

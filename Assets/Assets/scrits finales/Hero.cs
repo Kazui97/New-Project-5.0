@@ -54,12 +54,12 @@ using Npc;
 
     public void OnCollisionEnter(Collision col)
     {
-        if ( col.transform.name == "Zombi")
+        /*if ( col.transform.name == "Zombi")
         {           
             AddhP();
 
            
-        }
+        }*/
          if (col.transform.name == "curas")
          {
                 HpActual += cura;

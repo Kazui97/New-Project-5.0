@@ -31,9 +31,7 @@ public class sword : Npc.enemy.ZombieOP
     {
         if (Input.GetMouseButton(0))
         {
-            anim.enabled = true;
-            Debug.Log("pega*");
-            
+            anim.enabled = true;                      
         }
         else
         {
