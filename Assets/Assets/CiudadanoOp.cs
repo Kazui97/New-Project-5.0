@@ -47,7 +47,7 @@ namespace Npc
                 {                   
                     transform.name = "Zombi"; 
                     ZombieOP cambioedad = gameObject.AddComponent<ZombieOP>();
-                    gameObject.GetComponent<ZombieOP>().cam(); // modificado talvez cause errores 
+                    gameObject.GetComponent<ZombieOP>().Cam(); // modificado talvez cause errores 
                     cambioedad.datosZombi = (CosasZombie) gameObject.GetComponent<CiudadanoOp>().datoCiudadanos;
                     Destroy(this.gameObject.GetComponent<CiudadanoOp>());    
                 }

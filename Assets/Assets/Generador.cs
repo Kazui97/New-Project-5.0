@@ -25,16 +25,6 @@ public class Generador : MonoBehaviour
     public Text Ztext;
     public Text ctext;
 
-
-
-   /*  System.Random rn = new System.Random();
-    System.Random vamp = new System.Random();*/
-    /*public Generador()
-    {
-        minimo = rn.Next(5, 15);    //rango de creación
-        minimo = vamp.Next(5,15);
-    }*/
-
     void Start()
     {                                 // generador de NPC
         cantbody = Random.Range(minimo, maximo);
@@ -44,41 +34,13 @@ public class Generador : MonoBehaviour
         {
             if (Random.Range(0,2)==0)
             {           
-                // generador de zombis
+                                                                                // generador de zombis
                 ZombieMesh = Instantiate<GameObject>(ZombieMesh);
-                
-                //ZombieMesh = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                
-                //ZombieMesh.AddComponent<ZombieOP>();
-                
-               // datoszombi = ZombieMesh.GetComponent<ZombieOP>().datosZombi;
-                
-               /* switch (datoszombi.colorEs)
-                {
-                    case CosasZombie.ColorZombie.magenta:
-                        ZombieMesh.GetComponent<Renderer>().material.color = Color.magenta;
-
-                        break;
-                    case CosasZombie.ColorZombie.green:
-                        ZombieMesh.GetComponent<Renderer>().material.color = Color.green;
-
-                        break;
-                    case CosasZombie.ColorZombie.cyan:
-                        ZombieMesh.GetComponent<Renderer>().material.color = Color.cyan;
-                        break;
-                }*/
-                
-
                 Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-
-               
-                ZombieMesh.transform.position = pos;
-                
-                //ZombieMesh.AddComponent<Rigidbody>();
-                
+               ZombieMesh.transform.position = pos;     
                ZombieMesh.name = "Zombi";
             }
-            else if (Random.Range(0,2)== 1)// generador de ciudadanos \\
+            else if (Random.Range(0,2)== 1)                                             // generador de ciudadanos \\
             {
                 Gente = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Gente.AddComponent<CiudadanoOp>();
@@ -99,17 +61,7 @@ public class Generador : MonoBehaviour
                 
             }
         }
- 
-        // generador hero \\
-       /* Hero = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        Hero.AddComponent<MovimientoTeclado>();
-        Hero.AddComponent<Hero>();
-        Hero.AddComponent<BarraVida>();
-        Hero.AddComponent<Camera>();
-        Hero.AddComponent<Rigidbody>();
-        Hero.name = "Hero";*/
-
-            
+        
        int numzombie = 0;
        int numaldeanos = 0;
 

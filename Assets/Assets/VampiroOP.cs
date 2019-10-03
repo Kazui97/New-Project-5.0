@@ -70,6 +70,8 @@ public class VampiroOP : Monsters
         else 
         {
             Statemovi();
+
+
         }
     }
 }

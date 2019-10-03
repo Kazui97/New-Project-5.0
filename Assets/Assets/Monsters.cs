@@ -5,9 +5,9 @@ using UnityEngine;
 public class Monsters : MonoBehaviour
 {     
     int cambimov;
-    public int vidaMx = 100;
-    public int vidaActual;
-    public GameObject vida;
+   // public int vidaMx = 100;
+   // public int vidaActual;
+    //public GameObject vida;
         void Start()
         {
             condicion = (Estados)0;

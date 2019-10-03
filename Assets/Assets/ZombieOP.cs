@@ -15,6 +15,7 @@ namespace Npc
         {           
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
+            public Image Hpenemy;
             public int vidaZmax = 100;
             public int vidaactualz;
             public int daño = -2;
@@ -28,41 +29,41 @@ namespace Npc
                 
             }
 
-           // gameobjet.intanse + prefraf\\
-            public void OnCollisionEnter(Collision collision)
-            {
-                if (collision.transform.name == "player")
-                { 
-                     vidaactualz += -10;
-                    if (vidaactualz > vidaZmax)
-                    {
-                        vidaactualz = vidaZmax;
-                    }
-                    else if (vidaactualz < 0)
-                    {
-                        vidaactualz = 0;
-                        Debug.Log("zombi melto");
-                        Destroy(this.gameObject); /// SIRVE
-                       //Destroy(collision.gameObject.GetComponent<ZombieOP>());
-                        //Object.Destroy(gameObject.GetComponent<ZombieOP>());
+           void HpZ()
+           {
+                vidaactualz += -1;
+                if (vidaactualz > vidaZmax)
+                {
+                    vidaactualz = vidaZmax;
+                }
+                else if (vidaactualz < 0)
+                {
+                    vidaactualz = 0;
+                    Debug.Log("zombi melto");                 
+                    Destroy(this.gameObject); /// SIRVE
 
-                       /*  if ( vidaActual == 0)
-                        {
-                         Debug.Log("zombi muelto");
-                        }*/
-                    }
-                    
+
+                }
+                Hpzombi();
+           }
+           
+           void Hpzombi()                       // actualiza la imagen de que contiene el HP del Zombie \\
+           {
+                Hpenemy.fillAmount = ((1 / vidaZmax) * vidaactualz);
+           }
+           public void OnCollisionEnter(Collision collision)    // comfirma la colicion y y ejecuta la funcion HpZ \\
+           {
+                if (collision.transform.name == "player")
+                {
+                    HpZ();
                     Debug.Log(vidaactualz);
                 }
-            }
-            public void cam ()
+           }
+            public void Cam ()
             {
-                //datosZombi.colorEs = (CosasZombie.ColorZombie)Random.Range(0, 3);
-               // int Z_Ggusto = Random.Range(0, 5);
-                //datosZombi.sabroso = (CosasZombie.Gustos)Z_Ggusto;
                 int cambiocolor = Random.Range(1,3);
                  switch (cambiocolor)
-                {
+                 {
                     case 1:
                         gameObject.GetComponent<Renderer>().material.color = Color.magenta;
 
@@ -74,7 +75,7 @@ namespace Npc
                     case 3:
                         gameObject.GetComponent<Renderer>().material.color = Color.cyan;
                         break;
-                }
+                 }
             }
             Vector3 direction;
             void OnDrawGizmos()
@@ -97,11 +98,10 @@ namespace Npc
             
 
             void Update()
-            {
-
+            {       
                 float distanciaMin = 5;
                 GameObject ciudadanoMasCercano = null;
-
+                                                                    //significa que todos los zombies buscaran presas :v \\
                 foreach (var ciudadano in FindObjectsOfType<CiudadanoOp>())
                 {
                     float tempDist = Vector3.Distance(this.transform.position, ciudadano.transform.position);
@@ -121,7 +121,7 @@ namespace Npc
                     direction = Vector3.Normalize(ciudadanoMasCercano.transform.position - transform.position);
                     transform.position += direction * 2.5f / datosZombi.edadzombi;
                 }
-                else if (distanciajugador <= 3.0f)
+                else if (distanciajugador <= 3.0f)          // significa que los zombies trataran de asesinar al heroe \\
                 {
                     
                     direction = Vector3.Normalize(JugadorObjeto.transform.position - transform.position);
@@ -132,11 +132,11 @@ namespace Npc
 
 
                 }
-                 else if (distanciajugador >= 5.0f)
+                 else if (distanciajugador >= 5.0f)         //si el jugador esta mas cerca mostrara el mensaje en pantalla
                     {
                      textoz.GetComponent<Generador>().ctext.text = "";
                     }
-                else // no hay un ciudadano cerca
+                else // no hay un ciudadano cerca... el zombie entrara a sus estados normales hasta que encuentre otra presa
                 {
                     Statemovi();
                     
@@ -148,7 +148,7 @@ namespace Npc
         
     }
    
-    public struct CosasZombie
+    public struct CosasZombie                   // las estructuras se estan utilizando para almacenar los enum para poder acceder desde otro scrip\\
     {
         
         public enum Gustos
