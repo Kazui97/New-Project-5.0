@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Npc.ally;
+using UnityEngine.UI;
 
-public class VampiroOP : Monsters
+public class VampiroOP : Npc.NpcEstado
 {
     public GameObject jugadorObjeto;
-    
-
+    public int vidavampiro;                                 //variable que indica la vida actual del vampiro
+    public int vidamax = 150;                           // variable que indica la vida maxima de vampiro
+    public Image hpenemyV;                              // creamos esta imagen para poder agregar la imagen de vida que se habia creado en la jeranquia
     Vector3 direcc;
-     void OnDrawGizmos()
+     void OnDrawGizmos()   // el gizmo muestra con una flecha asi donde el vampiro de dirige 
      {
-         Gizmos.DrawLine(transform.position, transform.position + direcc);
+         Gizmos.DrawLine(transform.position, transform.position + direcc); 
      }
 
 
@@ -19,6 +21,7 @@ public class VampiroOP : Monsters
 
     void Start()
     {
+        vidavampiro = vidamax;
         StartCoroutine("Cambioestado");
         
         jugadorObjeto = FindObjectOfType<Hero>().gameObject;
@@ -39,7 +42,36 @@ public class VampiroOP : Monsters
         }
     }
 
-    
+    void HpV()               // funcion que se utliza para la vida que funciona como limitador  \\
+    {
+        vidavampiro -= 30;
+        if (vidavampiro > vidamax)
+        {
+            vidavampiro = vidamax;
+        }
+        else if (vidavampiro < 0)
+        {
+            vidavampiro = 0;
+            Debug.Log("zombi melto");
+            Destroy(this.gameObject); /// SIRVE
+
+
+        }
+        Hpvampiro();
+    }
+
+    void Hpvampiro()                       // actualiza la imagen de que contiene el HP del Zombie \\
+    {
+        hpenemyV.fillAmount = ((1 / vidamax) * vidavampiro);
+    }
+    public void OnCollisionEnter(Collision collision)    // comfirma la colicion y y ejecuta la funcion HpZ \\
+    {
+        if (collision.transform.name == "player")
+        {
+            HpV();
+        }
+    }
+
     void Update()
     {
         float distaciamin=5;
@@ -60,12 +92,12 @@ public class VampiroOP : Monsters
         if (ciudadanocerca != null)
         {
             direcc = Vector3.Normalize(ciudadanocerca.transform.position - transform.position);
-            transform.position += direcc * 0.5f;
+            transform.position += direcc * 0.2f;
         }
         else if (distanciajugador <= 3.0f )
         {
             direcc = Vector3.Normalize(jugadorObjeto.transform.position - transform.position);
-            transform.position += direcc * 0.1f;
+            transform.position += direcc * 0.2f;
         }
         else 
         {

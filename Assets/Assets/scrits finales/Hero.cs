@@ -31,9 +31,9 @@ using Npc;
         botiquin.name = "curas";
        // espada = Instantiate<GameObject>(espada);
     }
-    public void AddhP()
+    public void AddhP()                       // funcion que se utliza para la vida que funciona como limitador  \\
     {
-        HpActual += 10f;
+        HpActual -= 10f;
         if (HpActual > HpMax)
         {
             HpActual = HpMax;
@@ -47,26 +47,29 @@ using Npc;
 
     }
     
-     void Hpstate()
-        {
+     void Hpstate()               // funcion que se utliza para para actualizar la bara de vida del hero  \\
+     {
             HpHero.fillAmount = ((1/ HpMax) * HpActual);         
-        }
+     }
 
-    public void OnCollisionEnter(Collision col)
-    {
-        if ( col.transform.name == "player")
-        {    
+    public void OnCollisionEnter(Collision col)           // cuando el hero el choque con un zombie perderemos vida  \\
+    {     
             if (col.transform.name == "Zombi")       
             {
                 AddhP();
             }
-           
-        }
-         if (col.transform.name == "curas")
+            
+            if (col.transform.name == "vampi")
+            {
+                AddhP();
+            }
+        
+         if (col.transform.name == "curas")         // si el hero choca con un botiquin que se encuentra en el mapa este recupera vida 
          {
                 HpActual += cura;
+            Destroy(gameObject);
                 Hpstate();
-                if (HpActual > HpMax)
+                if (HpActual > HpMax)   // sirve para limitar la vida... para que no sobre pase el limite de ella
                 {
                     HpActual = HpMax;
                 }

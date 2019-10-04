@@ -11,7 +11,7 @@ namespace Npc
 {
     namespace enemy
     {
-        public class ZombieOP : Monsters
+        public class ZombieOP : NpcEstado
         {           
             public CosasZombie datosZombi;                                // ----------- struc de gustos y color ------------- \\
             public GameObject textoz;
@@ -29,8 +29,8 @@ namespace Npc
                 
             }
 
-           void HpZ()
-           {
+            void HpZ()               // funcion que se utliza para la vida del zombie \\
+            {
                 vidaactualz -= 15;
                 if (vidaactualz > vidaZmax)
                 {
@@ -39,26 +39,26 @@ namespace Npc
                 else if (vidaactualz < 0)
                 {
                     vidaactualz = 0;
-                    Debug.Log("zombi melto");                 
+                    Debug.Log("zombi melto");
                     Destroy(this.gameObject); /// SIRVE
 
 
                 }
                 Hpzombi();
-           }
-           
-           void Hpzombi()                       // actualiza la imagen de que contiene el HP del Zombie \\
-           {
+            }
+
+            void Hpzombi()                       // actualiza la imagen de que contiene el HP del Zombie \\
+            {
                 Hpenemy.fillAmount = ((1 / vidaZmax) * vidaactualz);
-           }
-           public void OnCollisionEnter(Collision collision)    // comfirma la colicion y y ejecuta la funcion HpZ \\
-           {
+            }
+            public void OnCollisionEnter(Collision collision)    // comfirma la colicion y y ejecuta la funcion HpZ \\
+            {
                 if (collision.transform.name == "player")
                 {
                     HpZ();
                     Debug.Log(vidaactualz);
                 }
-           }
+            }
             public void Cam ()                                      // color de los zombies-ciudadanos cuando se transforman \\
             {
                 int cambiocolor = Random.Range(1,3);
@@ -78,9 +78,9 @@ namespace Npc
                  }
             }
             Vector3 direction;
-            void OnDrawGizmos()
+            void OnDrawGizmos()             // sirve para ver la direccion en la que el zombie  se mueve \\
             {
-                Gizmos.DrawLine(transform.position, transform.position + direction);
+                Gizmos.DrawLine(transform.position, transform.position + direction);  
             }
 
             public GameObject JugadorObjeto;
@@ -90,7 +90,7 @@ namespace Npc
                 vidaactualz = vidaZmax;
                 StartCoroutine("Cambioestado");
 
-                JugadorObjeto = FindObjectOfType<Hero>().gameObject;
+                JugadorObjeto = FindObjectOfType<Hero>().gameObject;  // indica que el player ya es identificado por el zombi\\
 
 
             }         
@@ -125,17 +125,10 @@ namespace Npc
                 {
                     
                     direction = Vector3.Normalize(JugadorObjeto.transform.position - transform.position);
-                    transform.position += direction * 0.1f;
-                   // Debug.Log("waaarrrr "+ "quiero comer "+ datosZombi.sabroso + "" + datosZombi.edadzombi);
+                    transform.position += direction * 1.1f;
                     FindObjectsOfType<ZombieOP>();
-                    textoz.GetComponent<Generador>().Ztext.text = "waaarrrr "+ "quiero comer "+ datosZombi.sabroso;
-
 
                 }
-                 else if (distanciajugador >= 5.0f)         //si el jugador esta mas cerca mostrara el mensaje en pantalla
-                    {
-                     textoz.GetComponent<Generador>().ctext.text = "";
-                    }
                 else // no hay un ciudadano cerca... el zombie entrara a sus estados normales hasta que encuentre otra presa
                 {
                     Statemovi();

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Npc.enemy;
 
-public class sword : Npc.enemy.ZombieOP
+public class Sword : Npc.enemy.ZombieOP
 {
     public GameObject espada;
     public int dañoespada = 15;
@@ -17,17 +18,13 @@ public class sword : Npc.enemy.ZombieOP
     {
         anim.enabled = false;
     }
-     public new void  OnCollisionEnter(Collision colespada)
+     public void  OnCollisionEnter(Collision colespada)
      {
          if (colespada.transform.name == "Zombi")
-        {   
-            transform.parent = null;
+         {     
             vidaactualz -= dañoespada;
-        }
-        else 
-        {
-            //transform.parent = true;
-        }
+         }
+       
      }
 
 

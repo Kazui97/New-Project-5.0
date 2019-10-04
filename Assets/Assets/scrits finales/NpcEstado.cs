@@ -10,12 +10,12 @@ namespace Npc
     public class NpcEstado : MonoBehaviour
     {        
         int cambimov;
-        private void Start()
+         void Start()
         {
-            condicion = (Estados)0;
+            condicion = (Estados)0;                     // creacion de la corutina 
         }
 
-        public void Statemovi()
+        public void Statemovi()             //funcion que activa los moviminto de los Npc
         {
             switch(condicion)
             {
@@ -50,7 +50,7 @@ namespace Npc
                     break;
             }
         }
-        IEnumerator Cambioestado()
+        IEnumerator Cambioestado()          // corutina que actualiza cada 3sg el cambio de estado de los npc \\
         {
             while (true)
             {
