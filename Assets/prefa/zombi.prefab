@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 4994790002518116096}
   - component: {fileID: 6796759453201090499}
   - component: {fileID: 3461760345322649961}
+  - component: {fileID: 8571788737106200605}
   m_Layer: 0
   m_Name: zombi
   m_TagString: Untagged
@@ -317,6 +318,19 @@ MonoBehaviour:
   vidaactualz: 0
   "da\xF1o": -2
   JugadorObjeto: {fileID: 0}
+--- !u!65 &8571788737106200605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325277200860598759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999998, y: 1.9999999, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7035210405259088699
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,11 +611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2650101332949067055}
     m_Modifications:
-    - target: {fileID: 6594371440861332454, guid: 76e0098ecf9085049bd93bc07fe96d4f,
-        type: 3}
-      propertyPath: m_Name
-      value: VidaEnemy
-      objectReference: {fileID: 0}
     - target: {fileID: 3968946135595770449, guid: 76e0098ecf9085049bd93bc07fe96d4f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -716,6 +725,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.019121628
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594371440861332454, guid: 76e0098ecf9085049bd93bc07fe96d4f,
+        type: 3}
+      propertyPath: m_Name
+      value: VidaEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 8109702855264476786, guid: 76e0098ecf9085049bd93bc07fe96d4f,
         type: 3}

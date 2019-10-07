@@ -18,6 +18,8 @@ using Npc;
     public float HpMax = 100;
     public float HpActual;
     public float cura;
+
+    GameObject sword;
     
     
 
@@ -29,6 +31,7 @@ using Npc;
         Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
         botiquin.transform.position = pos;
         botiquin.name = "curas";
+        sword = GameObject.Find("DeathSword");
        // espada = Instantiate<GameObject>(espada);
     }
     public void AddhP()                       // funcion que se utliza para la vida que funciona como limitador  \\
@@ -52,17 +55,23 @@ using Npc;
             HpHero.fillAmount = ((1/ HpMax) * HpActual);         
      }
 
-    public void OnCollisionEnter(Collision col)           // cuando el hero el choque con un zombie perderemos vida  \\
+     public void OnCollisionEnter(Collision col)           // cuando el hero el choque con un zombie perderemos vida  \\
     {     
             if (col.transform.name == "Zombi")       
             {
-                AddhP();
+                if(Input.GetMouseButton(0) ==false)
+                {
+                    AddhP();
+                }
+                
+
             }
             
             if (col.transform.name == "vampi")
             {
                 AddhP();
             }
+            
         
          if (col.transform.name == "curas")         // si el hero choca con un botiquin que se encuentra en el mapa este recupera vida 
          {

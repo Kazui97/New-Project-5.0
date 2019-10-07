@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Npc.enemy;
 
-public class Sword : Npc.enemy.ZombieOP
+public class Sword : MonoBehaviour
 {
     public GameObject espada;
     public int dañoespada = 15;
 
-    Animator anim;
+    public Animator anim;
 
     void Awake()
     {
@@ -22,7 +22,7 @@ public class Sword : Npc.enemy.ZombieOP
      {
          if (colespada.transform.name == "Zombi")
          {     
-            vidaactualz -= dañoespada;
+            //vidaactualz -= dañoespada;
          }
        
      }
