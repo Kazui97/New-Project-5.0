@@ -69,7 +69,11 @@ using Npc;
             
             if (col.transform.name == "vampi")
             {
-                AddhP();
+               if(Input.GetMouseButton(0) ==false)
+                {
+                    AddhP();
+                }
+                
             }
             
         
